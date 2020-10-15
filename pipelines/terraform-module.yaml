@@ -29,4 +29,3 @@ steps:
       - asdf install
       - pre-commit install
       - pre-commit run -a
-
