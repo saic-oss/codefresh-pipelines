@@ -1,0 +1,32 @@
+# More examples of Codefresh YAML can be found at
+# https://codefresh.io/docs/docs/yaml-examples/examples/
+
+version: "1.0"
+# Stages can help you organize your steps in stages
+stages:
+  - "clone"
+  - "init"
+  - "validate"
+
+steps:
+  clone:
+    title: "Cloning repository"
+    type: "git-clone"
+    repo: "${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}"
+    revision: "${{CF_BRANCH}}"
+    git: "github"
+    stage: "clone"
+
+  validate:
+    title: "Validating pre-commit hooks"
+    type: "freestyle"
+    image: "dadsgarage/dadsgarage:0.3.3"
+    working_directory: "${{clone}}"
+    stage: "validate"
+    environment:
+      - "PRE_COMMIT_HOME=/codefresh/volume/pre-commit-cache"
+    commands:
+      - asdf install
+      - pre-commit install
+      - pre-commit run -a
+
