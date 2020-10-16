@@ -26,4 +26,5 @@ steps:
     environment:
       - "PRE_COMMIT_HOME=/codefresh/volume/pre-commit-cache"
     commands:
+      - asdf install
       - task validatePreCommitHooks
