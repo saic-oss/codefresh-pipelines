@@ -20,12 +20,11 @@ steps:
   validate:
     title: "Validating pre-commit hooks"
     type: "freestyle"
-    image: "dadsgarage/dadsgarage:0.3.3"
+    image: "dadsgarage/dadsgarage:0.3.4"
     working_directory: "${{clone}}"
     stage: "validate"
     environment:
       - "PRE_COMMIT_HOME=/codefresh/volume/pre-commit-cache"
     commands:
       - asdf install
-      - pre-commit install
-      - pre-commit run -a
+      - task validatePreCommitHooks
