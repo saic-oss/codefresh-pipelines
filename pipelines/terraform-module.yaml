@@ -20,7 +20,7 @@ steps:
   validate:
     title: "Validating pre-commit hooks"
     type: "freestyle"
-    image: "dadsgarage/dadsgarage:0.3.4"
+    image: "dadsgarage/dadsgarage:0.3.5"
     working_directory: "${{clone}}"
     stage: "validate"
     environment:
