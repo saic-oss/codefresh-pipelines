@@ -1,0 +1,27 @@
+version: "1.0"
+
+indicators:
+  - image: &runner saicoss/anvil:0.5.4
+
+stages:
+  - "clone"
+  - "deliver"
+
+steps:
+  clone:
+    title: "Cloning repository"
+    type: "git-clone"
+    repo: "${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}"
+    revision: "${{CF_BRANCH}}"
+    git: "github"
+    stage: "clone"
+
+  deliver:
+    title: "Validating project"
+    type: "freestyle"
+    image: *runner
+    working_directory: "${{clone}}"
+    stage: "deliver"
+    commands:
+      - asdf install
+      - task deliver
