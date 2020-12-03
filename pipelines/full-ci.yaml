@@ -1,7 +1,7 @@
 version: "1.0"
 
 indicators:
-  - image: &dadsgarage dadsgarage/dadsgarage:0.3.6
+  - image: &runner saicoss/anvil:0.5.3
 
 stages:
   - "clone"
@@ -21,7 +21,7 @@ steps:
   validate:
     title: "Validating project"
     type: "freestyle"
-    image: *dadsgarage
+    image: *runner
     working_directory: "${{clone}}"
     stage: "validate"
     environment:
@@ -33,7 +33,7 @@ steps:
   test:
     title: "Running automated tests"
     type: "freestyle"
-    image: *dadsgarage
+    image: *runner
     working_directory: "${{clone}}"
     stage: "test"
     commands:
@@ -43,7 +43,7 @@ steps:
   secure:
     title: "Running automated security checks"
     type: "freestyle"
-    image: *dadsgarage
+    image: *runner
     working_directory: "${{clone}}"
     stage: "secure"
     commands:
