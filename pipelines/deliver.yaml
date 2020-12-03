@@ -1,7 +1,7 @@
 version: "1.0"
 
 indicators:
-  - image: &runner saicoss/anvil:0.5.2
+  - image: &runner saicoss/anvil:0.5.3
 
 stages:
   - "clone"
