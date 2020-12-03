@@ -17,7 +17,7 @@ steps:
     stage: "clone"
 
   deliver:
-    title: "Validating project"
+    title: "Delivering artifact(s)"
     type: "freestyle"
     image: *runner
     working_directory: "${{clone}}"
